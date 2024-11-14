@@ -1,0 +1,289 @@
+/* ドロップダウンメニューのスタイル */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.dropdown {
+  position: absolute;
+  top: 100%; /* 変更なし */
+  left: 50%; /* left を 50% に変更 */
+  transform: translateX(-50%); /* この行を追加 */
+  background-color: rgba(0, 0, 0, 0.8); /* サイト全体の背景色に合わせる */
+  list-style: none;
+  padding: 0px;
+  margin: 0;
+  border-radius: 4px;
+  display: none;
+  flex-direction: column;
+  width: 115px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+/* ドロップダウンメニュー内のテキストスタイルを統一 */
+.dropdown li {
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-align: center; /* テキストを中央揃え */
+}
+
+.dropdown li:hover {
+  background-color: rgba(80, 80, 80, 0.8); /* ホバー時の背景色を統一 */
+}
+
+/* ドロップダウンをホバー時に表示 */
+li:hover .dropdown {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ヘッダー内のリンクのホバー時のスタイル */
+nav ul li:hover {
+  text-decoration: underline;
+}
+
+/* 全体のスタイル */
+html {
+  height: 100%;
+}
+
+body {
+  background: #111;
+  font-family: Sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* アプリ全体のコンテナ */
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #000;
+}
+
+/* マトリックス効果のキャンバス */
+.matrix-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* トップバーのスタイル */
+.top-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #000000;
+  color: #53bba5;
+  font-size: 0.8rem; /* フッターと同じフォントサイズ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 11; /* ヘッダーより上に表示 */
+}
+
+/* ヘッダーのスタイル */
+.app-header {
+  position: fixed;
+  top: 30px; /* トップバーの高さを考慮 */
+  width: 100%;
+  z-index: 10;
+  background-color: transparent;
+  height: 80px; /* ヘッダーの高さを80pxに設定 */
+}
+
+/* ヘッダー内の nav 要素をフレックスコンテナにして、アイテムを中央揃えにする */
+.app-header nav {
+  height: 100%;
+  display: flex;       /* この行を追加 */
+  align-items: center; /* この行を追加 */
+}
+
+/* ナビゲーションリストのスタイル */
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0 auto;         /* この行を追加または変更 */
+  padding: 0;
+  height: 100%;
+  align-items: center;
+  justify-content: center; /* 既に設定されている場合はそのままでOK */
+  width: fit-content;     /* この行を追加 */
+}
+
+
+/* ナビゲーション項目のスタイル */
+.nav-item {
+  position: relative;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0 50px; /* 左右の間隔を調整（数値はお好みで変更） */
+}
+
+
+/* ナビゲーションリンクのスタイル */
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* bol-area のスタイル */
+.bol-area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* ヘッダーとトップバーの高さを考慮して調整 */
+  text-align: center;
+  font-size: 4em;
+  color: #fff;
+  letter-spacing: -5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  animation: blur 0.75s ease-out infinite;
+  text-shadow: 0px 0px 5px #53bba5, 0px 0px 7px #53bba5;
+  z-index: 2; /* z-index を調整 */
+}
+
+/* モバイルビューの bol-area 調整 */
+@media (max-width: 768px) {
+  .bol-area {
+    font-size: 2.5em;
+    letter-spacing: -2px;
+    margin-top: 0;
+  }
+}
+
+/* アニメーション */
+@keyframes blur {
+  from {
+    text-shadow: 0px 0px 10px #53bba5,
+      0px 0px 10px #53bba5,
+      0px 0px 25px #53bba5,
+      0px 0px 25px #53bba5,
+      0px 0px 25px #53bba5,
+      0px 0px 25px #53bba5,
+      0px 0px 25px #53bba5,
+      0px 0px 25px #53bba5,
+      0px 0px 50px #53bba5,
+      0px 0px 50px #53bba5,
+      0px 0px 50px #7B96B8,
+      0px 0px 150px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px 10px 100px #7B96B8,
+      0px -10px 100px #7B96B8,
+      0px -10px 100px #7B96B8;
+  }
+}
+
+/* フッターのスタイル */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #000;
+  color: #888888;
+  font-size: 0.8rem;
+  padding: 0.1rem;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px; /* 高さを30pxに修正 */
+}
+
+/* フッター内のリンクのスタイル */
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Three.jsのキャンバスコンテナ */
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+/* Three.jsのキャンバス */
+.three-canvas {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* モバイルビューのスタイル調整 */
+@media (max-width: 768px) {
+  .app-header {
+    height: 80px;
+  }
+
+  .app-header nav {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    margin: 0 auto;
+    width: fit-content;
+    height: auto;
+  }
+
+  .nav-item {
+    margin: 0 40px;
+    position: relative; /* 追加：子要素の絶対位置指定に必要 */
+  }
+
+  /* 修正した .dropdown スタイル */
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 115px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+    padding: 0;
+    margin: 0;
+    display: none; /* 初期状態で非表示 */
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+  }
+
+  /* ドロップダウン表示の制御 */
+  .nav-item:hover .dropdown {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .dropdown li {
+    padding: 10px 20px;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    text-align: center;
+  }
+}
